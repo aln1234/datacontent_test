@@ -1,8 +1,10 @@
 {
   "name": "datacontent_test",
   "version": "0.1.0",
+  "proxy": "https://dev261597.service-now.com",
   "private": true,
   "dependencies": {
+    "@heroicons/react": "^2.1.5",
     "@shadcn/ui": "^0.0.4",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",

@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { refreshAccessToken } from "../utils";
-
-// Import the function from utils
+import CourseCard from "./UI/CourseCard";
 
 const Courses = () => {
-  const [courses, setCourses] = useState([]); // State to store courses
-  const [error, setError] = useState(null); // State to store error
+  const [courses, setCourses] = useState([]);
+  const [error, setError] = useState(null);
   const [accessToken, setAccessToken] = useState(
     process.env.REACT_APP_ACCESS_TOKEN
-  ); // Initial access token from .env
-  const [refreshToken] = useState(process.env.REACT_APP_REFRESH_TOKEN); // Refresh token from .env
+  );
+  const [refreshToken] = useState(process.env.REACT_APP_REFRESH_TOKEN);
 
   // Function to fetch course data
   const fetchCourseData = async (token) => {
@@ -19,17 +18,16 @@ const Courses = () => {
         "https://dev261597.service-now.com/api/now/table/x_quo_coursehub_course",
         {
           params: {
-            sysparm_limit: 10, // Fetch 10 records
+            sysparm_limit: 10,
           },
           headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`, // Use the provided access token
+            Authorization: `Bearer ${token}`,
           },
         }
       );
 
-      // Store the courses in state
       setCourses(response.data.result);
     } catch (err) {
       if (err.response && err.response.status === 401) {
@@ -40,7 +38,7 @@ const Courses = () => {
           setError
         );
         if (newToken) {
-          fetchCourseData(newToken); // Retry fetching data with new token
+          fetchCourseData(newToken);
         }
       } else {
         console.error("Error fetching the courses:", err);
@@ -49,28 +47,23 @@ const Courses = () => {
     }
   };
 
-  // Fetch course data when the component mounts
   useEffect(() => {
     fetchCourseData(accessToken);
-  }, [accessToken]); // Depend on the access token
+  }, [accessToken]);
 
   return (
-    <div>
-      <h1>Course Data</h1>
+    <div className="container mx-auto p-6">
+      <h1 className="text-2xl font-bold mb-6">Course List</h1>
 
-      {error && <p>{error}</p>}
+      {error && <p className="text-red-500">{error}</p>}
 
-      {/* Render the list of courses */}
+      {/* Render the list of courses in a responsive grid */}
       {courses.length > 0 ? (
-        <ul>
-          {courses.map((course) => (
-            <li key={course.sys_id}>
-              <h2>{course.title}</h2>
-              <p>Type: {course.type}</p>
-              <p>Duration: {course.duration}</p>
-            </li>
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {courses.map((course, index) => (
+            <CourseCard data={course} key={index} />
           ))}
-        </ul>
+        </div>
       ) : (
         <p>No courses available.</p>
       )}

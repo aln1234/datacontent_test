@@ -1,18 +1,60 @@
 // src/components/Navbar.js
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { ShoppingCartIcon } from "@heroicons/react/24/solid";
 
 const Navbar = () => {
+  const [courseCount, setCourseCount] = useState(12);
   return (
-    <nav>
-      <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/subscriptions">My Courses</Link>
-        </li>
-      </ul>
+    // <nav>
+    //   <ul>
+    //     <li>
+    //       <Link to="/">Home</Link>
+    //     </li>
+    //     <li>
+    //       <Link to="/subscriptions">My Courses</Link>
+    //     </li>
+    //   </ul>
+    // </nav>
+    <nav className="bg-white shadow-lg">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between h-16">
+          <div className="flex">
+            {/* Logo */}
+            <div className="flex-shrink-0 flex items-center">
+              <h1 className="text-xl uppercase">Learnify</h1>
+            </div>
+            {/* Links */}
+            <div className="hidden sm:flex items-center sm:space-x-8 ml-10">
+              <a
+                href="#"
+                className="text-gray-500 hover:text-gray-700 px-3 py-2 rounded-md text-sm font-medium"
+              >
+                My Courses
+              </a>
+            </div>
+          </div>
+
+          {/* Right-side Actions */}
+          <div className="hidden sm:flex sm:items-center">
+            {/* Log in / My Account */}
+            <a
+              href="#"
+              className="relative text-gray-500 hover:text-gray-700 px-3 py-2 rounded-md text-sm font-medium flex items-center"
+            >
+              <ShoppingCartIcon className="h-5 w-5 mr-2" />
+              {/* Icon added here */}
+
+              {/* Show course count only when it's greater than 0 */}
+              {courseCount > 0 && (
+                <span className="absolute top-0 right-0 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                  {courseCount}
+                </span>
+              )}
+            </a>
+          </div>
+        </div>
+      </div>
     </nav>
   );
 };
