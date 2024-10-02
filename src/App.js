@@ -5,16 +5,21 @@ import Courses from "./Components/Courses";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import SubscribeCourse from "./Components/SubscribeCourse";
+import { CourseProvider } from "./Components/Context";
 
 const App = () => {
   return (
-    <Router>
-      <ToastContainer />
-      <Navbar /> {/* Include the navbar */}
-      <Routes>
-        <Route path="/" element={<Courses />} />
-      </Routes>
-    </Router>
+    <CourseProvider>
+      <Router>
+        <ToastContainer />
+        <Navbar /> {/* Include the navbar */}
+        <Routes>
+          <Route path="/" element={<Courses />} />
+          <Route path="/subscriptions" element={<SubscribeCourse />} />
+        </Routes>
+      </Router>
+    </CourseProvider>
   );
 };
 
