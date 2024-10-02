@@ -3,9 +3,13 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom"; // Us
 import Navbar from "./Components/Navbar";
 import Courses from "./Components/Courses";
 
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const App = () => {
   return (
     <Router>
+      <ToastContainer />
       <Navbar /> {/* Include the navbar */}
       <Routes>
         <Route path="/" element={<Courses />} />

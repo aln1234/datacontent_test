@@ -31,30 +31,25 @@ export const refreshAccessToken = async (
   }
 };
 
-// export const formatDuration = (duration) => {
-//   if (!duration) {
-//     return "Invalid duration";
-//   }
+export const formatDuration = (duration) => {
+  if (!duration) return "No duration specified";
 
-//   // Extract the time portion from the string (e.g., "00:00:00" part from "1970-01-01 00:00:00")
-//   const timePart = duration.split(" ")[1];
+  const timePart = duration.split(" ")[1];
 
-//   // Split the time part into hours, minutes, and seconds
-//   const [hours, minutes, seconds] = timePart.split(":").map(Number);
+  const [hours, minutes, seconds] = timePart.split(":");
 
-//   // Return the formatted duration
-//   return `${hours} hours, ${minutes} minutes, ${seconds} seconds`;
-// };
+  return `${parseInt(hours)} hours, ${parseInt(minutes)} minutes`;
+};
 
 export const getTypeColor = (type) => {
   switch (type) {
     case "offline":
-      return "bg-blue-100 text-blue-800"; // Blue for online courses
+      return "bg-blue-100 text-blue-800";
     case "online":
-      return "bg-green-100 text-green-800"; // Green for offline courses
+      return "bg-green-100 text-green-800";
     case "hybrid":
-      return "bg-yellow-100 text-yellow-800"; // Yellow for hybrid courses
+      return "bg-yellow-100 text-yellow-800";
     default:
-      return "bg-gray-100 text-gray-800"; // Default color for other types
+      return "bg-gray-100 text-gray-800";
   }
 };
