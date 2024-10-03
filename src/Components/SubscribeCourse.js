@@ -19,9 +19,10 @@ const SubscribeCourse = () => {
       return {
         ...course,
         learnerId: matchedSubCourse.learner.value,
+        course_id: matchedSubCourse.sys_id,
       };
     });
-
+  console.log(mergedArray, "merged");
   return (
     <div className="container mx-auto p-6">
       <h1 className="text-2xl font-bold mb-6"> Subscribe Course List</h1>

@@ -32,15 +32,11 @@ const CourseCard = ({ data, hidden }) => {
       setError("Error subscribing to the course.");
     }
   };
-
+  console.log(data);
   const handleUnsubscribe = async () => {
     try {
-      await axios.post(
-        "https://dev261597.service-now.com/api/now/table/x_quo_coursehub_course_subscription",
-        {
-          sys_id: data.sys_id,
-          sysparm_query_no_domain: true,
-        },
+      await axios.delete(
+        `https://dev261597.service-now.com/api/now/table/x_quo_coursehub_course_subscription/${data.course_id}`, // Updated to pass sys_id in the URL
         {
           headers: {
             Authorization: `Bearer ${process.env.REACT_APP_ACCESS_TOKEN}`,
@@ -49,10 +45,11 @@ const CourseCard = ({ data, hidden }) => {
         }
       );
 
-      toast("Subscribed to the course!");
+      toast("Unsubscribed from the course!");
       fetchSubscribeCourseData(accessToken);
     } catch (error) {
-      setError("Error subscribing to the course.");
+      setError("Error unsubscribing from the course.");
+      console.error(error);
     }
   };
 
@@ -92,7 +89,7 @@ const CourseCard = ({ data, hidden }) => {
           </button>
         ) : (
           <button
-            onClick={handleSubscribe}
+            onClick={handleUnsubscribe}
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-200"
           >
             Unsubscribe
