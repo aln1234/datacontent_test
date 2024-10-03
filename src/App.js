@@ -6,7 +6,7 @@ import Courses from "./Components/Courses";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import SubscribeCourse from "./Components/SubscribeCourse";
-import { CourseProvider } from "./Components/Context";
+import { CourseProvider } from "./Components/Context/CourseContext";
 
 const App = () => {
   return (

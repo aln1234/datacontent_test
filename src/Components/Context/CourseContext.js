@@ -5,6 +5,7 @@ export const CourseContext = createContext();
 
 export const CourseProvider = ({ children }) => {
   const [courses, setCourses] = useState([]);
+  const [subCourses, setSubCourses] = useState([]);
   const [error, setError] = useState(null);
   const [accessToken, setAccessToken] = useState(
     process.env.REACT_APP_ACCESS_TOKEN
@@ -36,14 +37,48 @@ export const CourseProvider = ({ children }) => {
       }
     }
   };
+  const fetchSubscribeCourseData = async () => {
+    try {
+      const response = await axios.get(
+        "https://dev261597.service-now.com/api/now/table/x_quo_coursehub_course_subscription",
+        {
+          params: {
+            sysparm_limit: 10,
+          },
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${accessToken}`,
+          },
+        }
+      );
+      setSubCourses(response.data.result);
+    } catch (err) {
+      if (err.response && err.response.status === 401) {
+        console.log("Access token expired. Refreshing...");
+      } else {
+        console.error("Error fetching the courses:", err);
+        setError("Error fetching courses. Please try again.");
+      }
+    }
+  };
 
   // Fetch courses on component mount
   useEffect(() => {
     fetchCourseData(accessToken);
+    fetchSubscribeCourseData(accessToken);
   }, [accessToken]);
 
   return (
-    <CourseContext.Provider value={{ courses, error, fetchCourseData }}>
+    <CourseContext.Provider
+      value={{
+        courses,
+        error,
+        fetchCourseData,
+        subCourses,
+        fetchSubscribeCourseData,
+      }}
+    >
       {children}
     </CourseContext.Provider>
   );
