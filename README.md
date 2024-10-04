@@ -78,7 +78,7 @@ This is a **Course Subscription Prototype** application built with **React** on 
 1. **Clone the repository**:
 
    ```
-   bash
+
 git clone <repository-url>
 cd course-subscription-prototype
 
@@ -86,7 +86,7 @@ cd course-subscription-prototype
 
 2. **Install the Dependencies**:
 
-```bash
+```
 npm install
 
 ```
@@ -105,7 +105,7 @@ REACT_APP_CLIENT_SECRET=<your-client-secret>
 
 4. **Start the Application**:
 
-```bash
+```
 npm start
 
 ```
