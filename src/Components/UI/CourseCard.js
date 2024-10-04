@@ -2,21 +2,22 @@ import React, { useState, useContext } from "react";
 import axios from "axios"; // Add axios import
 import { getTypeColor, formatDuration } from "../../utils";
 import { toast } from "react-toastify";
-import { CourseContext } from "../Context/CourseContext";
+import { CourseContext } from "../../Context/CourseContext";
+import { CalendarIcon } from "@heroicons/react/24/solid";
 
 const CourseCard = ({ data, hidden }) => {
-  const defaultImage = "https://via.placeholder.com/400x200?text=Course+Image";
-  const { fetchSubscribeCourseData, accessToken, subCourses, setSubCourses } =
-    useContext(CourseContext);
-  const [error, setError] = useState(null); // Add error state
+  const defaultImage = "/images/book_1.jpg";
+  const { fetchSubscribeCourseData, accessToken } = useContext(CourseContext);
+  const [error, setError] = useState(null);
 
+  //handle the subscribe functionality
   const handleSubscribe = async () => {
     try {
       await axios.post(
         "https://dev261597.service-now.com/api/now/table/x_quo_coursehub_course_subscription",
         {
           course: data.sys_id,
-          learner_id: "learner_sysid",
+          learner_id: "learner_sysid", // hardcoded learner Id since the login functionality is not mandatory
         },
         {
           headers: {
@@ -25,14 +26,15 @@ const CourseCard = ({ data, hidden }) => {
           },
         }
       );
-
+      //show toast when the course is subscribe
       toast("Subscribed to the course!");
       fetchSubscribeCourseData(accessToken);
     } catch (error) {
       setError("Error subscribing to the course.");
     }
   };
-  console.log(data);
+
+  // handle Unsubscribe functionality
   const handleUnsubscribe = async () => {
     try {
       await axios.delete(
@@ -49,7 +51,7 @@ const CourseCard = ({ data, hidden }) => {
       fetchSubscribeCourseData(accessToken);
     } catch (error) {
       setError("Error unsubscribing from the course.");
-      console.error(error);
+      toast(error);
     }
   };
 
@@ -58,16 +60,18 @@ const CourseCard = ({ data, hidden }) => {
       <img
         src={data.imageUrl || defaultImage}
         alt={data.title}
-        className="w-full h-48 object-cover"
+        className="w-full h-36 object-cover"
       />
       <div className="px-6 py-4">
         <div className="font-bold text-xl mb-2">{data.title}</div>
 
         <p className="text-gray-700 text-base">{data.description}</p>
 
-        <p className="text-sm text-gray-500 mb-4">
-          Duration: {formatDuration(data.duration)}
-        </p>
+        <div className="flex items-center mt-4 ">
+          <CalendarIcon className="h-5 w-5 text-gray-500 mr-2" />
+
+          <span>{formatDuration(data.duration)}</span>
+        </div>
 
         {error && <p className="text-red-500">{error}</p>}
       </div>
