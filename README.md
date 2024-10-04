@@ -45,7 +45,7 @@ This is a **Course Subscription Prototype** application built with **React** on 
 ### 6. **Error Handling**
 
 - Proper error handling for failed API requests:
-  - Errors in fetching courses, subscribing, or unsubscribing are displayed to the user via error messages and toast notifications.
+- Errors in fetching courses, subscribing, or unsubscribing are displayed to the user via error messages and toast notifications.
 
 ### 7. **Responsive Design**
 
