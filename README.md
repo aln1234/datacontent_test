@@ -77,35 +77,30 @@ This is a **Course Subscription Prototype** application built with **React** on 
 
 1. **Clone the repository**:
 
-   ```
-
+```
 git clone <repository-url>
 cd course-subscription-prototype
-
-   ```
+```
 
 2. **Install the Dependencies**:
 
 ```
 npm install
-
 ```
 
 
 3. **Setup the Environment**:
 Create a .env file at the root of your project with the following environment variables:
 
-```bash
+```
 REACT_APP_ACCESS_TOKEN=<your-access-token>
 REACT_APP_REFRESH_TOKEN=<your-refresh-token>
 REACT_APP_CLIENT_ID=<your-client-id>
 REACT_APP_CLIENT_SECRET=<your-client-secret>
-
 ```
 
 4. **Start the Application**:
 
 ```
 npm start
-
 ```
