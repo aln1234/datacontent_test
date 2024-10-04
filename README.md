@@ -90,12 +90,6 @@ This is a **Course Subscription Prototype** application built with **React** on 
 
 ```
 
-2. **Install the Dependencies**:
-
-```bash
-   npm install
-
-```
 
 3. **Setup the Environment**:
    Create a .env file at the root of your project with the following environment variables:
@@ -110,6 +104,7 @@ REACT_APP_CLIENT_SECRET=<your-client-secret>
 4. **Start the Application**:
    Create a .env file at the root of your project with the following environment variables:
 
-```npm start
+```
+npm start
 
 ```
