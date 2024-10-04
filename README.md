@@ -1,70 +1,115 @@
-# Getting Started with Create React App
+# Course Subscription Prototype
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a **Course Subscription Prototype** application built with **React** on the frontend and **ServiceNow** as the backend. The application allows users (learners) to view a list of available courses, subscribe to them, and manage their course subscriptions.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+### 1. **Course List**
 
-### `npm start`
+- Fetches and displays a list of available courses from the backend (ServiceNow).
+- Course details include:
+  - **Title**
+  - **Description**
+  - **Duration**
+  - **Type** (Online, Offline, Hybrid)
+  - **Course Image** (with a default placeholder if no image is provided)
+- Courses are displayed in a responsive **grid layout**.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 2. **Subscription Feature**
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Each course has a "Subscribe" button, allowing users to subscribe to courses.
+- Subscribing creates a new record in the **Course Subscription** table in ServiceNow.
+- Feedback is provided upon successful subscription using **toast notifications**.
 
-### `npm test`
+### 3. **Unsubscribe Feature**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Users can **unsubscribe** from courses they are subscribed to.
+- Unsubscribing removes the subscription from the backend and updates the UI accordingly.
+- Feedback is provided upon successful unsubscription using **toast notifications**.
 
-### `npm run build`
+### 4. **My Courses Section**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Displays the courses the user has subscribed to by fetching data from the backend.
+- Each subscribed course displays:
+  - **Title**
+  - **Description**
+  - **Duration**
+  - An **Unsubscribe** button.
+- This section allows users to manage their subscriptions.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 5. **Navbar with Subscription Count**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- The navbar includes a shopping cart icon that shows the **number of subscribed courses**.
+- This count updates dynamically based on the user's subscriptions.
 
-### `npm run eject`
+### 6. **Error Handling**
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- Proper error handling for failed API requests:
+  - Errors in fetching courses, subscribing, or unsubscribing are displayed to the user via error messages and toast notifications.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 7. **Responsive Design**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- The application is fully responsive and works well on both mobile and desktop devices.
+- Styling is handled using **Tailwind CSS**.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Technologies Used
 
-## Learn More
+### **Frontend:**
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- **React**: For building the UI.
+- **React Router**: For navigation between pages.
+- **Axios**: For making API requests to the backend.
+- **Tailwind CSS**: For responsive and modern styling.
+- **React Toastify**: For showing notifications (e.g., on successful subscription or unsubscription).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### **Backend:**
 
-### Code Splitting
+- **ServiceNow**: The backend is implemented on the ServiceNow platform, which provides:
+  - **Course Table**: Stores the course details.
+  - **Subscription Table**: Stores the user's course subscriptions.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### **Authentication:**
 
-### Analyzing the Bundle Size
+- The application uses **OAuth token-based authentication** to communicate with the ServiceNow backend.
+- The access token is stored in an **`.env`** file and passed in the API requests for secure access.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Installation and Setup
 
-### Making a Progressive Web App
+1. **Clone the repository**:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+   ```bash
+   git clone <repository-url>
+   cd course-subscription-prototype
 
-### Advanced Configuration
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+2. **Install the Dependencies**:
 
-### Deployment
+```bash
+   npm install
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+```
 
-### `npm run build` fails to minify
+2. **Install the Dependencies**:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```bash
+   npm install
+
+```
+
+3. **Setup the Environment**:
+   Create a .env file at the root of your project with the following environment variables:
+
+```REACT_APP_ACCESS_TOKEN=<your-access-token>
+REACT_APP_REFRESH_TOKEN=<your-refresh-token>
+REACT_APP_CLIENT_ID=<your-client-id>
+REACT_APP_CLIENT_SECRET=<your-client-secret>
+
+```
+
+4. **Start the Application**:
+   Create a .env file at the root of your project with the following environment variables:
+
+```npm start
+
+```
