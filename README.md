@@ -86,17 +86,16 @@ cd course-subscription-prototype
 
 2. **Install the Dependencies**:
 
-```
-bash
+```bash
 npm install
 
 ```
 
 
 3. **Setup the Environment**:
-   Create a .env file at the root of your project with the following environment variables:
+Create a .env file at the root of your project with the following environment variables:
 
-```
+```bash
 REACT_APP_ACCESS_TOKEN=<your-access-token>
 REACT_APP_REFRESH_TOKEN=<your-refresh-token>
 REACT_APP_CLIENT_ID=<your-client-id>
@@ -105,9 +104,8 @@ REACT_APP_CLIENT_SECRET=<your-client-secret>
 ```
 
 4. **Start the Application**:
-   Create a .env file at the root of your project with the following environment variables:
 
-```
+```bash
 npm start
 
 ```
