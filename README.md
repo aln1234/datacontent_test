@@ -45,7 +45,7 @@ This is a **Course Subscription Prototype** application built with **React** on 
 ### 6. **Error Handling**
 
 - Proper error handling for failed API requests:
-  - Errors in fetching courses, subscribing, or unsubscribing are displayed to the user via error messages and toast notifications.
+- Errors in fetching courses, subscribing, or unsubscribing are displayed to the user via error messages and toast notifications.
 
 ### 7. **Responsive Design**
 
@@ -77,39 +77,30 @@ This is a **Course Subscription Prototype** application built with **React** on 
 
 1. **Clone the repository**:
 
-   ```bash
-   git clone <repository-url>
-   cd course-subscription-prototype
-
-   ```
-
-2. **Install the Dependencies**:
-
-```bash
-   npm install
-
+```
+git clone <repository-url>
+cd course-subscription-prototype
 ```
 
 2. **Install the Dependencies**:
 
-```bash
-   npm install
-
 ```
+npm install
+```
+
 
 3. **Setup the Environment**:
-   Create a .env file at the root of your project with the following environment variables:
+Create a .env file at the root of your project with the following environment variables:
 
-```REACT_APP_ACCESS_TOKEN=<your-access-token>
+```
+REACT_APP_ACCESS_TOKEN=<your-access-token>
 REACT_APP_REFRESH_TOKEN=<your-refresh-token>
 REACT_APP_CLIENT_ID=<your-client-id>
 REACT_APP_CLIENT_SECRET=<your-client-secret>
-
 ```
 
 4. **Start the Application**:
-   Create a .env file at the root of your project with the following environment variables:
 
-```npm start
-
+```
+npm start
 ```
