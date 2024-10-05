@@ -1,10 +1,10 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Navbar from "./Components/Navbar";
-import Courses from "./Components/Courses";
-
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
+import Navbar from "./Components/Navbar";
+import Courses from "./Components/Courses";
 import SubscribeCourse from "./Components/SubscribeCourse";
 import { CourseProvider } from "./Context/CourseContext";
 
