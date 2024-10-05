@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
-import CourseCard from "./UI/CourseCard";
 import { CourseContext } from "../Context/CourseContext";
+
+import CourseCard from "./UI/CourseCard";
 
 const SubscribeCourse = () => {
   const { courses, subCourses, error } = useContext(CourseContext);

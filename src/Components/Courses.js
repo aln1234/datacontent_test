@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
+import { CourseContext } from "../Context/CourseContext";
 
 import CourseCard from "./UI/CourseCard";
-import { CourseContext } from "../Context/CourseContext";
 
 const Courses = () => {
   const { courses, error } = useContext(CourseContext);

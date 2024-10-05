@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom"; // Use Routes instead of Switch
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Navbar from "./Components/Navbar";
 import Courses from "./Components/Courses";
 
@@ -13,7 +13,7 @@ const App = () => {
     <CourseProvider>
       <Router>
         <ToastContainer />
-        <Navbar /> {/* Include the navbar */}
+        <Navbar />
         <Routes>
           <Route path="/" element={<Courses />} />
           <Route path="/subscriptions" element={<SubscribeCourse />} />
