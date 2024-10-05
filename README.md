@@ -79,7 +79,7 @@ This is a **Course Subscription Prototype** application built with **React** on 
 
 ```
 git clone <repository-url>
-cd course-subscription-prototype
+cd datacontent_test
 ```
 
 2. **Install the Dependencies**:
