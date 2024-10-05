@@ -47,10 +47,7 @@ This is a **Course Subscription Prototype** application built with **React** on 
 - Proper error handling for failed API requests:
 - Errors in fetching courses, subscribing, or unsubscribing are displayed to the user via error messages and toast notifications.
 
-### 7. **Responsive Design**
 
-- The application is fully responsive and works well on both mobile and desktop devices.
-- Styling is handled using **Tailwind CSS**.
 
 ## Technologies Used
 
