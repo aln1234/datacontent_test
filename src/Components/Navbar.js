@@ -1,5 +1,4 @@
-// src/components/Navbar.js
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { ShoppingCartIcon } from "@heroicons/react/24/solid";
 import { CourseContext } from "../Context/CourseContext";
@@ -22,7 +21,6 @@ const Navbar = () => {
       };
     });
 
-  console.log(mergedArray);
   return (
     <nav className="bg-white shadow-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
